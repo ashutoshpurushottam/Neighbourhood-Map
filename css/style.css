@@ -7,6 +7,148 @@ body,
 }
 
 body {
-	font-family: 'Open Sans Condensed', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	background-color: #2F4F4F;
+	color: #FFFFFF;
+}
+
+h1 {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 1.5em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 0;
+}
+
+
+#search-btn {
+	color: #333333;
+}
+
+.search-input {
+  font-size: 0.8em;
+}
+
+#search-container {
+  padding-bottom: 12px;
+}
+
+.wide-view-list {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 16px;
+}
+
+
+/* Nav bar CSS */
+
+.nav-expander {
+  background: none repeat scroll 0 0 #2F4F4F;;
+  color: #FFFFFF;
+  display: block;
+  font-size: 1em;
+  margin-right: 0;
+  padding: 1em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: right 0.3s ease-in-out 0s;
+  width: 60px;
+  z-index: 12;
+
+  transition: right 0.3s ease-in-out 0s;
+  -webkit-transition: right 0.3s ease-in-out 0s;
+  -moz-transition: right 0.3s ease-in-out 0s;
+  -o-transition: right 0.3s ease-in-out 0s;
+}
+
+.nav-expander span,
+.nav-expander span:before,
+.nav-expander span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 5px;
+  width: 35px;
+  background: white;
+  position: absolute;
+  display: block;
+  content: '';
+}
+.nav-expander span:before {
+  top: -10px;
+}
+.nav-expander span:after {
+  bottom: -10px;
+}
+
+.nav-expander:hover {
+  cursor: pointer;
+}
+
+.nav-expander.fixed {
+  position: fixed;
+  display: none;
+}
+
+.nav-expanded a.nav-expander.fixed {
+  right: 15em;
+}
+
+nav {
+  display: block;
+  height: 100%;
+  overflow: auto;
+  position: fixed;
+  right: -15em;
+  font-size: 15px;
+  top: 0;
+  width: 15em;
+  z-index: 2000;
+
+  transition: right 0.3s ease-in-out 0s;
+  -webkit-transition: right 0.3s ease-in-out 0s;
+  -moz-transition: right 0.3s ease-in-out 0s;
+  -o-transition: right 0.3s ease-in-out 0s;
+}
+
+.nav-expanded nav {
+  right: 0;
+}
+
+.nav-expanded {
+  margin-left: 0em;
+  transition: right 0.4s ease-in-out 0s;
+  -webkit-transition: right 0.4s ease-in-out 0s;
+  -moz-transition: right 0.4s ease-in-out 0s;
+  -o-transition: right 0.4s ease-in-out 0s;
+}
+
+.main-menu {
+  background-color: #2F4F4F;
+}
+
+.mobile-list {
+  padding-left: 1em;
+}
+
+/* end of nav bar css */
+
+@media screen and (max-width: 992px) {
+  .wide-view-list {
+    display: none;
+  }
+
+  .nav-expander.fixed {
+    display: block;
+  }
+
+  .mobile-list {
+    padding-left: 16px;
+  }
+
 }

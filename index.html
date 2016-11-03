@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Bangalore Restaurants</title>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -12,11 +13,44 @@
 	<div class="container">
 		<!-- search area for wider view -->
 		<div class="col-md-3">
-			<img src="http://placehold.it/350x900" class="full-img">
+			<!-- Search container -->
+			<div id="search-container">
+				<h1>Filter by name or location:</h1>
+				<form id="restaurant-search">
+					<input type="text" name="search-string" placeholder="Name or location" class="search-input">&nbsp;
+					<input type="submit" value="Search" id="search-btn">
+				</form> 
+			</div>
+			<!-- End of search container -->
+			<ul class="wide-view-list">
+				<li>First</li>
+				<li>Second</li>
+				<li>Third</li>
+			</ul>
 		</div>
-		<!-- end of search area -->
-		<div class="col-md-9"><img src="http://placehold.it/900x900" class="full-img"></div>
+		<!-- end of search area for wider view -->
+		<!-- map area -->
+		<div class="col-md-9">
+			<img src="http://placehold.it/900x900" class="full-img">
+		</div>
+		<!-- end of map area -->
+		<!-- mobile nav -->
+		<nav class="mobile main-menu">
+			<ul class="mobile-list">
+				<li>First</li>
+				<li>Second</li>
+				<li>Third</li>
+			</ul>
+		</nav>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+      		<div class="navbar-header pull-right">
+        		<a id="nav-expander" class="nav-expander fixed" href="#"><span></span></a>
+      		</div>
+    	</div>
+		<!-- end of mobile nav -->
 	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/smallscreen.js"></script>
 
 </body>
 </html>
