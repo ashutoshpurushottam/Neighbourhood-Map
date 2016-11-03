@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Include bootstrap -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Custom style -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Roboto condensed for page -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+	<title>The Bangalore Restaurants</title>
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-3 side-nav">
+			<h1>Restaurants in Bangalore</h1>
+			<div id="search-form">
+				<form id="restaturant-search">
+					<input type="text" name="search-string" id="search-str" class="search-input">
+          			<input type="submit" value="search" class="search-btn">
+				</form>
+			</div>
+			<ul class="desktop-restaurant-list">
+				<li>First link</li>
+				<li>Second link</li>
+				<li>Third link</li>
+			</ul>
+		</div>
+
+		<div class="col-md-9 main-container">
+			<h1>Container for map</h1>
+		</div>
+
+	<!-- small screen navigation -->
+    <nav class="mobile main-menu">
+      <ul class="mobile-list">
+      	<li>First link</li>
+      	<li>Second link</li>
+      	<li>Third link</li>
+      </ul>
+    </nav>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header pull-right">
+        <a id="nav-expander" class="nav-expander fixed" href="#"><span></span></a>
+      </div>
+    </div>
+    <!-- end of small screen navigation -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/smallscreen.js"></script>
+	</div>
+
+</body>
+</html>
