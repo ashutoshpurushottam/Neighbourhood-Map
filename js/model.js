@@ -4,6 +4,7 @@ var Restaurant = function(data) {
 	this.name = ko.observable(data.name);
 	this.lat = ko.observable(data.lat);
 	this.lng = ko.observable(data.lng);
+	this.description = ko.observable(data.description);
 	this.address = ko.observable(data.address);
 
 	// marker

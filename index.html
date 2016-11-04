@@ -24,10 +24,8 @@
 				</form> 
 			</div>
 			<!-- End of search container -->
-			<ul class="wide-view-list">
-				<li>First</li>
-				<li>Second</li>
-				<li>Third</li>
+			<ul class="wide-view-list" data-bind="foreach:restaurants">
+				<li data-bind="text:name, click: $parent.clickRestaurantMarker"></li>
 			</ul>
 		</div>
 		<!-- end of search area for wider view -->
@@ -37,10 +35,8 @@
 		<!-- end of map area -->
 		<!-- mobile nav -->
 		<nav class="mobile-menu">
-			<ul class="mobile-list">
-				<li>First</li>
-				<li>Second</li>
-				<li>Third</li>
+			<ul class="mobile-list" data-bind="foreach:restaurants">
+				<li data-bind="text:name, click: $parent.clickRestaurantMarker"></li>
 			</ul>
 		</nav>
 		<div class="navbar navbar-inverse navbar-fixed-top">

@@ -1,9 +1,10 @@
 // List of restaurants 
 var restaurants = [
   {
-    name: 'Anand Sweets and Savouries map',
+    name: 'Anand Sweets and Savouries',
     lat: 12.9372055,
     lng: 77.619576,
+    description: 'Sweets shop',
     address: '143/A, 60 Feet Road, Koramangala 5th Block'
   },
   {

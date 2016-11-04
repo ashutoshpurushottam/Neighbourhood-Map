@@ -24,6 +24,11 @@ ul {
 }
 li {
     padding: 0;
+    padding-bottom: 2px;
+}
+
+li:hover {
+    color: #FFFF19;
 }
 
 #myModal {

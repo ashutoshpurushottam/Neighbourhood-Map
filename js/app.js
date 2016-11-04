@@ -3,7 +3,7 @@ var map;
 // Initialize the default infoWindow
 var infoWindow = new google.maps.InfoWindow({
 	// default content
-	content: '<div><h4 id="brewery-name"></h4><p id="brewery-address"></p><p id="yelp"></p></div>'
+	content: ''
 });
 
 var ViewModel = function() {
@@ -41,7 +41,7 @@ var ViewModel = function() {
 		var modalContent = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' 
 		+ '<div class="modal-dialog">' + '<div class="modal-content">' + '<div class="modal-header">' 
 		+ '<h4 class="modal-title" id="myModalLabel">'+ restaurant.name() + '</h4>' + '</div>' 
-		+ '<div class="modal-body">' + 'replace by restaurant description' + '</div>' + '</div></div></div>';
+		+ '<div class="modal-body">' + restaurant.description() + '</div>' + '</div></div></div>';
 
 		infoWindow.setContent(modalContent);
 		infoWindow.open(map, restaurant.marker());
