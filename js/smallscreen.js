@@ -5,8 +5,12 @@ $(document).ready(function(){
     $('body').toggleClass('nav-expanded');
   });
   $('.mobile-list').on('click', function(e) {
-    console.log('clicked');
     e.preventDefault();
     $('body').toggleClass('nav-expanded');
   })
+  $('.mobile-menu').on('click', function(e) {
+    e.preventDefault();
+    $('body').toggleClass('nav-expanded');
+  })
+
 });
