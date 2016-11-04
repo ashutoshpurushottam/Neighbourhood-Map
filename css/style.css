@@ -25,6 +25,11 @@ ul {
 li {
     padding: 0;
 }
+
+#myModal {
+    color: black;
+}
+
 #search-btn {
     color: #333333;
 }
