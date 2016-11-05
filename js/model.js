@@ -1,3 +1,13 @@
+// Yelp Constants
+var yelpKeyData = {
+	consumerKey: 'F5APQyb0l7Em1n9zaVUNsQ',
+	consumerSecret: '3dYrzpG46RBg4uk_uLuHyUwi1rI',
+	token: 'EsMVBbm6XcJsvvAjbqPec7Fm6oibxnK9',
+	tokenSecret: 'cZ57WmK7BvKmk-Irq6dFanfnqjA'
+};
+
+
+
 // Constructor for restaurant
 var Restaurant = function(data) {
 	// properties as observable

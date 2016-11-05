@@ -1,58 +1,103 @@
 // List of restaurants 
 var restaurants = [
   {
-    name: 'Anand Sweets and Savouries',
-    lat: 12.9372055,
-    lng: 77.619576,
-    description: 'Sweets shop',
-    address: '143/A, 60 Feet Road, Koramangala 5th Block'
+    name: 'Zareen’s',
+    lat: 37.4162118,
+    lng: -122.0795373,
+    description: 'Halal, Indian, Pakistani',
+    address: '1477 Plymouth St Mountain View, CA 94043, USA'
   },
   {
-    name: 'The London Curry House',
-    lat: 12.9852857,
-    lng: 77.5793526,
-    address: '19/2, Kumara Krupa Road, Off Race Course Road'
+    name: 'Plaza Deli Cafe',
+    lat: 37.429742,
+    lng: -122.1000773,
+    description: 'Delis, Sandwiches, Salad',
+    address: '2680 Bayshore Pkwy Mountain View, CA 94043, USA'
   },
   {
-    name: 'Baithak',
-    lat: 12.910739,
-    lng: 77.651512,
-    address: '1659, 27th Main Road, Sector 2, HSR Layout, HSR'
+    name: 'The Sandwich Spot',
+    lat: 37.3790959,
+    lng: -122.0725441,
+    description: 'Delis, Sandwiches, Cafes', 
+    address: '123 E El Camino Real Mountain View, CA 94040, USA'
   },
   {
-    name: 'Pulimunchi',
-    lat: 12.980732,
-    lng: 77.591234,
-    address: '307, 2nd Floor, 1st Stage, K.P. Square, 100 feet Road'
+    name: ' Veggie Garden',
+    lat: 37.3988099,
+    lng: -122.1117013,
+    description: 'Vegan, Vegetarian, Chinese',
+    address: '2464 W El Camino Real Mountain View, CA 94040, USA'
   },
   {
-    name: 'Lock Stock & Barrel',
-    lat: 13.0883421,
-    lng: 77.635347,
-    address: '3, Opposite KNS Institute of Technology, Hegde Nagar Main Road, Thirumenahalli, Jakkur'
+    name: 'Bowl of Heaven',
+    lat: 37.3797118,
+    lng: -122.0726051,
+    description: 'Vegan, Juice Bars & Smoothies, Gluten-Free',
+    address: '1040 Grant Rd Mountain View, CA 94040'
   },
   {
-    name: 'Mane Thindi',
-    lat: 12.9228957,
-    lng: 77.5563452,
-    address: '295/A, 7th Main road, 7th Block, 3rd Stage, Banashankari'
+    name: 'Sajj Mediterranean',
+    lat: 37.4009402,
+    lng: -122.112336,
+    description: 'Mediterranean',
+    address: '2580 West El Camino Real Mountain View, CA 94040, USA'
   },
   {
-    name: 'Gangotree',
-    lat: 12.984792,
-    lng: 77.588457,
-    address: 'High Point IV, Palace Ground, Race Course Road'
+    name: 'Hunan Home’s Express',
+    lat: 37.4021562,
+    lng: -122.1075105,
+    description: 'Chinese',
+    address: '530 Showers Dr #8, Mountain View, CA 94040, USA'
   },
   {
-    name: 'Gringo',
-    lat: 13.0220314102,
-    lng: 77.6300590485,
-    address: '19/8, G-1, M.G Residency, K.K Halli, Hennur Main Road, Kalyan Nagar'
+    name: 'Poke Bar',
+    lat: 37.3960747,
+    lng: -122.0948134,
+    description: 'Seafood, Hawaiian',
+    address: '340 Castro St, Mountain View, CA 94041, USA'
+  },
+{
+    name: 'Mahalo Bowl',
+    lat: 37.3879617,
+    lng: -122.0829015,
+    description: 'Vegetarian, Juice Bars & Smoothies',
+    address: '650 Castro #140 St Mountain View, CA 94041, USA'
+  },
+{
+    name: 'Blue Line Pizza',
+    lat: 37.3945498,
+    lng: -122.0787007,
+    description: 'Pizza, Salad, Italian',
+    address: '146 Castro St Mountain View, CA 94041, USA'
+  },
+
+  {
+    name: 'Garden Fresh',
+    lat: 37.3879223,
+    lng: -122.0890381,
+    description: 'Chinese, Vegan',
+    address: '1245 W El Camino Real, Mountain View, CA 94040, USA'
   },
   {
-    name: 'Paparazzi - Royal Orchid Central map',
-    lat: 12.9749107,
-    lng: 77.6154481,
-    address: 'Royal Orchid Central, 47/1, Dickenson Road, Off MG Road, MG Road'
+    name: 'House of Bagels',
+    lat: 37.3728527,
+    lng: -122.0874861,
+    description: 'Bagels, Breakfast & Brunch, Sandwiches ',
+    address: 'Blossom Valley, 1712 Miramonte Ave, Mountain View, CA 94040, USA'
+  },
+{
+    name: 'Sunny Bowl',
+    lat: 37.4161033,
+    lng: -122.0794022,
+    description: 'Korean',
+    address: '1477 Plymouth St c, Mountain View, CA 94043, USA'
+  },
+{
+    name: ' Vive Sol',
+    lat: 37.3953169,
+    lng: -122.0996107,
+    description: 'Mexican',
+    address: '2020 W El Camino Real, Mountain View, CA 94040, USA'
   }
+  
 ]
