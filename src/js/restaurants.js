@@ -141,4 +141,4 @@ var restaurants = [
     description: ' Latin American, Seafood',
     address: '1390 Pear Ave b, Mountain View, CA 94043, USA'
   }
-]
+];

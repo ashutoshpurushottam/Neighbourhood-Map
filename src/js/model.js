@@ -26,5 +26,4 @@ var Restaurant = function(data) {
 
     // set marker as observable
     this.marker = ko.observable(marker);
-
 };

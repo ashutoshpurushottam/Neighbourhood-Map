@@ -1,4 +1,3 @@
-
 var ViewModel = function() {
     'use strict';
     var self = this;
@@ -15,11 +14,11 @@ var ViewModel = function() {
             // drop animation on all markers
             restaurant.marker().setAnimation(google.maps.Animation.DROP);
         });
-    }
+    };
 
     self.searchString = ko.observable('');
 
-    self.worker = ko.computed(function () {
+    self.worker = ko.computed(function() {
         if (self.searchString()) self.restaurantFilter();
     }, this);
 
@@ -56,17 +55,20 @@ var ViewModel = function() {
     // listener for clicks on restaurants
     self.setRestaurantClicks = function() {
         self.restaurants().forEach(function(restaurant) {
-            google.maps.event.addListener(restaurant.marker(), 
-                'click', function() {
-                self.clickRestaurantMarker(restaurant);
-            });
+            google.maps.event.addListener(restaurant.marker(),
+                'click',
+                function() {
+                    self.clickRestaurantMarker(restaurant);
+                });
         });
     };
 
     self.clickRestaurantMarker = function(restaurant) {
         // Animation on marker
         restaurant.marker().setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout( function() { restaurant.marker().setAnimation(null); }, 500);
+        setTimeout(function() {
+            restaurant.marker().setAnimation(null);
+        }, 500);
         // pan to clicked restaurant
         map.panTo(new google.maps.LatLng(restaurant.lat(), restaurant.lng()));
         // request for retrieving restaurant yelp rating
@@ -78,8 +80,7 @@ var ViewModel = function() {
         // https://blog.nraboy.com/2015/03/create-a-random-nonce-string-using-javascript/
         var generateNonce = function() {
             var text = "";
-            var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghi\
-            klmnopqrstuvwxyz0123456789";
+            var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             for (var i = 0; i < 20; i++) {
                 text += characters.charAt(Math.floor(
                     Math.random() * characters.length));
@@ -103,9 +104,9 @@ var ViewModel = function() {
         };
 
 
-        var encodedSignature = oauthSignature.generate('GET', 
-            yelpURL, 
-            parameters, 
+        var encodedSignature = oauthSignature.generate('GET',
+            yelpURL,
+            parameters,
             yelpKeyData.consumerSecret,
             yelpKeyData.tokenSecret);
 
@@ -126,16 +127,14 @@ var ViewModel = function() {
                 var url = response.businesses[0].url;
 
                 // modal dialog (getbootstrap.net)
-                var modalContent = '<div class="modal fade" id="myModal" tabindex="-1"\
-                role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
-                '<div class="modal-dialog">' + '<div class="modal-content">' +
-                '<div class="modal-header">' + 
-                '<h4 class="modal-title" id="myModalLabel">' + 
-                restaurant.name() + '</h4>' + '</div>' + '<div class="modal-body">' +
-                restaurant.address() + '<br>' + restaurant.description() +
-                '<div><a id="url-yelp" target="_blank" class="yelp-link" href="' 
-                + url + '">' + '<br><span id="rating-text">Yelp Rating: </span></a>'
-                + '<img src="' + imageUrl + '">'+'</div>' + '</div></div></div>';
+                var modalContent = '<div class="modal fade" id="myModal" tabindex="-1"' +
+                'role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+                    '<div class="modal-dialog">' + '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                    '<h4 class="modal-title" id="myModalLabel">' +
+                    restaurant.name() + '</h4>' + '</div>' + '<div class="modal-body">' +
+                    restaurant.address() + '<br>' + restaurant.description() +
+                    '<div><a id="url-yelp" target="_blank" class="yelp-link" href="' + url + '">' + '<br><span id="rating-text">Yelp Rating: </span></a>' + '<img src="' + imageUrl + '">' + '</div>' + '</div></div></div>';
                 infoWindow.setContent(modalContent);
                 infoWindow.open(map, restaurant.marker());
             },
@@ -146,15 +145,14 @@ var ViewModel = function() {
                 });
 
                 // modal dialog (getbootstrap.net)
-                var modalContent = '<div class="modal fade" id="myModal" tabindex="-1"\
-                role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
-                '<div class="modal-dialog">' + '<div class="modal-content">' +
-                '<div class="modal-header">' + 
-                '<h4 class="modal-title" id="myModalLabel">' + 
-                restaurant.name() + '</h4>' + '</div>' + '<div class="modal-body">' +
-                restaurant.address() + '<br>' + restaurant.description() +
-                '<br><div><span id="rating-text">Could not retrieve yelp rating</span></a>'
-                + '</div></div></div>';
+                var modalContent = '<div class="modal fade" id="myModal" tabindex="-1"' +
+                'role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+                    '<div class="modal-dialog">' + '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                    '<h4 class="modal-title" id="myModalLabel">' +
+                    restaurant.name() + '</h4>' + '</div>' + '<div class="modal-body">' +
+                    restaurant.address() + '<br>' + restaurant.description() +
+                    '<br><div><span id="rating-text">Could not retrieve yelp rating</span></a>' + '</div></div></div>';
 
                 infoWindow.setContent(modalContent);
                 infoWindow.open(map, restaurant.marker());
@@ -163,7 +161,7 @@ var ViewModel = function() {
 
         // Yelp request
         $.ajax(ajaxSettings);
-    }
+    };
 
 
     google.maps.event.addDomListener(window, 'load', function() {
@@ -174,25 +172,22 @@ var ViewModel = function() {
         self.filteredRestaurants(self.restaurants());
     });
 
-}
+};
 
 var map;
-function loadMap() {
-	map = new google.maps.Map(document.getElementById('map-container'), {
-		center: {
-			lat: 37.3899,
-			lng: -122.0839
-		},
-		zoom: 13
-	});
 
-	ko.applyBindings(new ViewModel());
+function loadMap() {
+    map = new google.maps.Map(document.getElementById('map-container'), {
+        center: {
+            lat: 37.3899,
+            lng: -122.0839
+        },
+        zoom: 13
+    });
+
+    ko.applyBindings(new ViewModel());
 }
 
 function googleError() {
-	alert("Error in loading google map");
+    alert("Error in loading google map");
 }
-
-
-
-
