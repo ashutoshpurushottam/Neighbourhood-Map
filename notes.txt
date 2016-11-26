@@ -1,3 +1,32 @@
 key = AIzaSyArkueGNZvO_XWjd1gKS5Y81x7r_Nm4t3g
 zomato api key = ae9fdad306bab37737d983eb3d9d7e57
 
+Broadcast Receivers recieve broadcasts throught intents (Incoming call, low battery or any custom broadcast)
+
+Registering Broadcast Receiver : 
+1. By declaring in the manifest file. Using intent filters we tell the system any intent that matches our subelements should get delivered to that specific broadcast receiver.
+
+2. Programatically by calling registerReceiver by setting intent filter through addAction method. 
+
+Sending Broadcast from Activity
+
+By creating an intent object and then setting an action for the intent. 
+Then we can use sendBroacast method. 
+
+To prevent other applications from receiving the intent we declare exported property as false.  
+
+For application-wide broadcasts using LocalBroadcastManager is preferred. 
+
+STICKY BROADCASTS
+A normal broadcast reaches the receiver it's intended for, then terminates. A sticky broadcast remains sticks around so that it can notify other apps if they need the same information – for example, that the battery is now fully charged. When you register a new app that needs to know the information, or when an inactive app is launched, the sticky broadcast will be sent to the new app's receiver.
+
+Pending Intent: Pending Intent is actually an object which wraps an intent to do some future work by another app.
+
+It lets us pass a future Intent to another application and allow that application to execute that Intent as if it had the same permissions as our application, whether or not our application is still around when the Intent is eventually invoked.
+
+A PendingIntent is generally used in cases were an AlarmManager needs to be executed or for Notifications. A PendingIntent provides a means for applications to work, even after their process exits.
+
+Sticky Intent is also a type of Intent which allows a communication between function and a service sendStickyBroadcast() performs a sendBroadcast(Inent) know as sticky,the Intent your are sending stays around after the broadcast is complete, so that others can quickly retrieve that data through the return value of registerReceiver(BroadcastReceiver, IntentFilter). In all other ways, this behaves the same as sendBroadcast(Intent).
+
+
+

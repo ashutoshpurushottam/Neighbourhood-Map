@@ -1,6 +1,7 @@
 var map;
 
 // Initialize the default infoWindow
+// Used for showing restaurant information
 var infoWindow = new google.maps.InfoWindow({
 	// default content
 	content: ''
@@ -8,23 +9,28 @@ var infoWindow = new google.maps.InfoWindow({
 
 var ViewModel = function() {
 	'use strict';
-
 	var self = this;
 
+	// store all restaurants
 	self.restaurants = ko.observableArray([]);
+	// store restaurants for search string
+	self.filteredRestaurants = ko.observableArray([]);
 
-	// load google map (synchronous call)
+	// load google map
 	self.loadMap = function() {
 		map = new google.maps.Map(document.getElementById('map-container'), {
 			center: {lat: 37.3861, lng: -122.0839},
-			zoom: 12
+			zoom: 13
     	});
 	}
 
-	// add restaurants 
+	// add all restaurants to the list
 	self.restaurantItems = function() {
 		restaurants.forEach(function(item) {
-			self.restaurants.push( new Restaurant(item) );
+			var restaurant = new Restaurant(item);
+			self.restaurants.push(restaurant);
+			// drop animation on all markers
+			restaurant.marker().setAnimation(google.maps.Animation.DROP);
     	});
 	}
 
@@ -35,21 +41,32 @@ var ViewModel = function() {
 				self.clickRestaurantMarker(restaurant);
 			});
 		});
-	};	
+	};
 
 	self.clickRestaurantMarker = function(restaurant) {
+		// request for retrieving restaurant yelp rating
+		self.yelpRequest(restaurant);
+
+		// modal dialog (getbootstrap.net)
 		var modalContent = '<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' 
 		+ '<div class="modal-dialog">' + '<div class="modal-content">' + '<div class="modal-header">' 
 		+ '<h4 class="modal-title" id="myModalLabel">'+ restaurant.name() + '</h4>' + '</div>' 
-		+ '<div class="modal-body">' + restaurant.description()
+		+ '<div class="modal-body">' + restaurant.address()+'<br>'+restaurant.description()
 		+ '<div><span id="rating-text">Yelp Rating:</span>' + '<img id="rating-img">'+ '</div>' 
 		+ '</div></div></div>';
 
 		infoWindow.setContent(modalContent);
 		infoWindow.open(map, restaurant.marker());
 
-		self.yelpRequest(restaurant);
-	}
+		self.setAnimationMapMarker(restaurant);
+	};
+
+	// Marker animation when clicked (bounce)
+	self.setAnimationMapMarker = function(restaurant) {
+		restaurant.marker().setAnimation(google.maps.Animation.BOUNCE);
+		setTimeout( function() { restaurant.marker().setAnimation(null); }, 900);
+	};
+
 
 	self.yelpRequest = function(restaurant) {
 		// generate random string for oauth_nonce
@@ -78,6 +95,7 @@ var ViewModel = function() {
 			limit: 1
 		};
 
+
 		var encodedSignature = oauthSignature.generate('GET', yelpURL, parameters, yelpKeyData.consumerSecret, yelpKeyData.tokenSecret);
 
 		parameters.oauth_signature = encodedSignature;
@@ -101,14 +119,45 @@ var ViewModel = function() {
 	}
 
 
+
+		// filtering of restaurants
+		self.restaurantFilter = function() {
+			self.filteredRestaurants([]);
+			// search string 
+			var searchString = $('#search-string').val().toLowerCase();
+			var listLength = self.restaurants().length;
+
+			for (var i = 0; i < listLength; i++) {
+				// each restaurant name 
+				var restaurantName = self.restaurants()[i].name().toLowerCase();
+				// each restaurant address
+				var address = self.restaurants()[i].address().toLowerCase();
+				// remove spaces from restaurant address using regex
+				address = address.replace(/\s+/g, '');
+
+				// add to the filtered list if name or address matches
+				if (restaurantName.indexOf(searchString) > -1 ||
+					address.indexOf(searchString) > -1) {
+					self.filteredRestaurants.push(self.restaurants()[i]);
+				// Set the map property of the marker to the map
+					self.restaurants()[i].marker().setMap(map);
+				} else {
+				// for others make them null to be invisible
+				self.restaurants()[i].marker().setMap(null);
+			}
+		}
+	};
+
+
 	google.maps.event.addDomListener(window, 'load', function() {
 		// load map
 		self.loadMap();
-		// add restaurant markers
+		// add restaurants m
 		self.restaurantItems();
-		// add restaurant clicks
+		// restaurant clicks
 		self.setRestaurantClicks();
-
+		// initialize with all restaurants
+		self.filteredRestaurants(self.restaurants());
 	});
 
 }

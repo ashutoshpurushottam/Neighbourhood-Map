@@ -3,28 +3,28 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Bangalore Restaurants</title>
+	<title>Mountain View Restaurants</title>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArkueGNZvO_XWjd1gKS5Y81x7r_Nm4t3g"></script>
-
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 	<div class="container">
 		<!-- search area for wider view -->
 		<div class="col-md-3">
 			<!-- Search container -->
 			<div id="search-container">
-				<h1>Filter by name or location:</h1>
-				<form id="restaurant-search">
-					<input type="text" name="search-string" placeholder="Name or location" class="search-input">&nbsp;
+				<h1>Filter by name or address:</h1>
+				<form id="restaurant-search" data-bind="submit:restaurantFilter">
+					<input type="text" id="search-string" name="search-string" placeholder="Name or address" class="search-input">&nbsp;
 					<input type="submit" value="Search" id="search-btn">
 				</form> 
 			</div>
 			<!-- End of search container -->
-			<ul class="wide-view-list" data-bind="foreach:restaurants">
+			<ul class="wide-view-list" data-bind="foreach:filteredRestaurants">
 				<li data-bind="text:name, click: $parent.clickRestaurantMarker"></li>
 			</ul>
 		</div>
@@ -35,7 +35,7 @@
 		<!-- end of map area -->
 		<!-- mobile nav -->
 		<nav class="mobile-menu">
-			<ul class="mobile-list" data-bind="foreach:restaurants">
+			<ul class="mobile-list" data-bind="foreach:filteredRestaurants">
 				<li data-bind="text:name, click: $parent.clickRestaurantMarker"></li>
 			</ul>
 		</nav>
@@ -52,10 +52,12 @@
 	<script src="js/oauth-signature.min.js"></script>
 	<!-- menu hamburger for small screens -->
 	<script src="js/smallscreen.js"></script>
+	<!-- Restaurant Model -->
 	<script src="js/model.js"></script>
+	<!-- Restaurant data -->
 	<script src="js/restaurants.js"></script>
+	<!-- Bindings -->
 	<script src="js/app.js"></script>
-
 
 </body>
 </html>
