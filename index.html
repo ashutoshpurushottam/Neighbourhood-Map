@@ -20,7 +20,7 @@
 			<div id="search-container">
 				<h1>Filter by name or address:</h1>
 				<form id="restaurant-search" data-bind="submit:restaurantFilter">
-					<input type="text" id="search-string" name="search-string" placeholder="Name or address" class="search-input">&nbsp;
+					<input type="text" data-bind="value: searchString, valueUpdate: 'afterkeydown'" id="search-string" name="search-string" placeholder="Name or address" class="search-input">&nbsp;
 					<input type="submit" value="Search" id="search-btn">
 				</form> 
 			</div>

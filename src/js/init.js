@@ -17,6 +17,42 @@ var ViewModel = function() {
         });
     }
 
+    self.searchString = ko.observable('');
+
+    self.worker = ko.computed(function () {
+        if (self.searchString()) self.restaurantFilter();
+    }, this);
+
+    // filtering of restaurants
+    self.restaurantFilter = function() {
+        self.filteredRestaurants([]);
+        // length of list of restaurants
+        var listLength = self.restaurants().length;
+        // search string 
+        //var searchString = $('#search-string').val().toLowerCase();
+        var search = self.searchString();
+
+        for (var i = 0; i < listLength; i++) {
+            // each restaurant name 
+            var restaurantName = self.restaurants()[i].name().toLowerCase();
+            // each restaurant address
+            var address = self.restaurants()[i].address().toLowerCase();
+            // remove spaces from restaurant address using regex
+            address = address.replace(/\s+/g, '');
+
+            // add to the filtered list if name or address matches
+            if (restaurantName.indexOf(search) > -1 ||
+                address.indexOf(search) > -1) {
+                self.filteredRestaurants.push(self.restaurants()[i]);
+                // Set the map property of the marker to the map
+                self.restaurants()[i].marker().setVisible(true);
+            } else {
+                // for others make them null to be invisible
+                self.restaurants()[i].marker().setVisible(false);
+            }
+        }
+    };
+
     // listener for clicks on restaurants
     self.setRestaurantClicks = function() {
         self.restaurants().forEach(function(restaurant) {
@@ -28,6 +64,9 @@ var ViewModel = function() {
     };
 
     self.clickRestaurantMarker = function(restaurant) {
+        // Animation on marker
+        restaurant.marker().setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout( function() { restaurant.marker().setAnimation(null); }, 500);
         // request for retrieving restaurant yelp rating
         self.yelpRequest(restaurant);
         // initialize info window for each restaurant item
@@ -111,36 +150,6 @@ var ViewModel = function() {
         $.ajax(ajaxSettings);
     }
 
-
-
-    // filtering of restaurants
-    self.restaurantFilter = function() {
-        self.filteredRestaurants([]);
-        // length of list of restaurants
-        var listLength = self.restaurants().length;
-        // search string 
-        var searchString = $('#search-string').val().toLowerCase();
-
-        for (var i = 0; i < listLength; i++) {
-            // each restaurant name 
-            var restaurantName = self.restaurants()[i].name().toLowerCase();
-            // each restaurant address
-            var address = self.restaurants()[i].address().toLowerCase();
-            // remove spaces from restaurant address using regex
-            address = address.replace(/\s+/g, '');
-
-            // add to the filtered list if name or address matches
-            if (restaurantName.indexOf(searchString) > -1 ||
-                address.indexOf(searchString) > -1) {
-                self.filteredRestaurants.push(self.restaurants()[i]);
-                // Set the map property of the marker to the map
-                self.restaurants()[i].marker().setMap(map);
-            } else {
-                // for others make them null to be invisible
-                self.restaurants()[i].marker().setMap(null);
-            }
-        }
-    };
 
 
     google.maps.event.addDomListener(window, 'load', function() {
