@@ -20,7 +20,7 @@ var ViewModel = function() {
     self.loadMap = function() {
         map = new google.maps.Map(document.getElementById('map-container'), {
             center: {
-                lat: 37.3861,
+                lat: 37.3899,
                 lng: -122.0839
             },
             zoom: 13
