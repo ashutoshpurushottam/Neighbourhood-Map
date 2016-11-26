@@ -125,18 +125,35 @@ var ViewModel = function() {
                 });
                 var imageUrl = response.businesses[0].rating_img_url;
                 var url = response.businesses[0].url;
+                var modalContent;
+              
 
-                // modal dialog (getbootstrap.net)
-                var modalContent = '<div class="modal fade" id="myModal" tabindex="-1"' +
-                'role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
-                    '<div class="modal-dialog">' + '<div class="modal-content">' +
-                    '<div class="modal-header">' +
-                    '<h4 class="modal-title" id="myModalLabel">' +
-                    restaurant.name() + '</h4>' + '</div>' + '<div class="modal-body">' +
-                    restaurant.address() + '<br>' + restaurant.description() +
-                    '<div><a id="url-yelp" target="_blank" class="yelp-link" href="' + url + '">' + '<br><span id="rating-text">Yelp Rating: </span></a>' + '<img src="' + imageUrl + '">' + '</div>' + '</div></div></div>';
+                if (imageUrl && url) {
+                    // modal dialog (getbootstrap.net)
+                    modalContent = '<div class="modal fade" id="myModal" tabindex="-1"' +
+                        'role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+                        '<div class="modal-dialog">' + '<div class="modal-content">' +
+                        '<div class="modal-header">' +
+                        '<h4 class="modal-title" id="myModalLabel">' +
+                        restaurant.name() + '</h4>' + '</div>' + '<div class="modal-body">' +
+                        restaurant.address() + '<br>' + restaurant.description() +
+                        '<div><a id="url-yelp" target="_blank" class="yelp-link" href="' + 
+                        url + '">' + '<br><span id="rating-text">Yelp Rating: </span></a>' 
+                        + '<img src="' + imageUrl + '">' + '</div>' + '</div></div></div>';
+                } else {
+                    modalContent = '<div class="modal fade" id="myModal" tabindex="-1"' +
+                        'role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+                        '<div class="modal-dialog">' + '<div class="modal-content">' +
+                        '<div class="modal-header">' +
+                        '<h4 class="modal-title" id="myModalLabel">' +
+                        restaurant.name() + '</h4>' + '</div>' + '<div class="modal-body">' +
+                        restaurant.address() + '<br>' + restaurant.description() +
+                        '<br><div><span id="rating-text">Could not retrieve yelp rating</span></a>' 
+                        + '</div></div></div>';
+                }
                 infoWindow.setContent(modalContent);
                 infoWindow.open(map, restaurant.marker());
+
             },
             error: function() {
                 var infoWindow = new google.maps.InfoWindow({
@@ -146,13 +163,14 @@ var ViewModel = function() {
 
                 // modal dialog (getbootstrap.net)
                 var modalContent = '<div class="modal fade" id="myModal" tabindex="-1"' +
-                'role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+                    'role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
                     '<div class="modal-dialog">' + '<div class="modal-content">' +
                     '<div class="modal-header">' +
                     '<h4 class="modal-title" id="myModalLabel">' +
                     restaurant.name() + '</h4>' + '</div>' + '<div class="modal-body">' +
                     restaurant.address() + '<br>' + restaurant.description() +
-                    '<br><div><span id="rating-text">Could not retrieve yelp rating</span></a>' + '</div></div></div>';
+                    '<br><div><span id="rating-text">Could not retrieve yelp rating</span></a>' 
+                    + '</div></div></div>';
 
                 infoWindow.setContent(modalContent);
                 infoWindow.open(map, restaurant.marker());
