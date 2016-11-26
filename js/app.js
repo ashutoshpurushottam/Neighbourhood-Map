@@ -58,15 +58,7 @@ var ViewModel = function() {
 		infoWindow.setContent(modalContent);
 		infoWindow.open(map, restaurant.marker());
 
-		self.setAnimationMapMarker(restaurant);
 	};
-
-	// Marker animation when clicked (bounce)
-	self.setAnimationMapMarker = function(restaurant) {
-		restaurant.marker().setAnimation(google.maps.Animation.BOUNCE);
-		setTimeout( function() { restaurant.marker().setAnimation(null); }, 900);
-	};
-
 
 	self.yelpRequest = function(restaurant) {
 		// generate random string for oauth_nonce
@@ -123,9 +115,10 @@ var ViewModel = function() {
 		// filtering of restaurants
 		self.restaurantFilter = function() {
 			self.filteredRestaurants([]);
+			// length of list of restaurants
+			var listLength = self.restaurants().length;
 			// search string 
 			var searchString = $('#search-string').val().toLowerCase();
-			var listLength = self.restaurants().length;
 
 			for (var i = 0; i < listLength; i++) {
 				// each restaurant name 
@@ -152,7 +145,7 @@ var ViewModel = function() {
 	google.maps.event.addDomListener(window, 'load', function() {
 		// load map
 		self.loadMap();
-		// add restaurants m
+		// add restaurants 
 		self.restaurantItems();
 		// restaurant clicks
 		self.setRestaurantClicks();

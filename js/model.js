@@ -22,6 +22,7 @@ var Restaurant = function(data) {
 	marker = new google.maps.Marker({
 		position: new google.maps.LatLng(this.lat(), this.lng()),
 		map: map,
+		animation: google.maps.Animation.BOUNCE,
 		title: this.name()
 	});
 
