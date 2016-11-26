@@ -5,6 +5,14 @@ body,
     height: 100%
 }
 
+.visible {
+    display: inline;
+}
+
+.invisible {
+    display: none;
+}
+
 #map-container {
     height: 100%;
 }
