@@ -19,8 +19,9 @@ restaurant is opened.
 ### Credits ###
 - Front-end Framework: [Bootstrap][4]
 - Off Canvas Slide Menu: [Thermada Blog][5]
-- Setting up Grunt [24ways][6]
-- Animation on Markers[Google Developer Documentation][7]
+- Setting up Grunt: [24ways][6]
+- Animation on Markers: [Google Developer Documentation][7]
+- Search Form in Navigation: [Tutorial Republic][8]
 
 ### TODO's ###
 - Find and use a restaurant API for Bangalore.
@@ -34,3 +35,4 @@ restaurant is opened.
 [5]: http://blog.themearmada.com/off-canvas-slide-menu-for-bootstrap/
 [6]: https://24ways.org/2013/grunt-is-not-weird-and-hard/
 [7]: https://developers.google.com/maps/documentation/javascript/examples/marker-animations
+[8]: http://www.tutorialrepublic.com/codelab.php?topic=bootstrap&file=navbar-with-search-form
