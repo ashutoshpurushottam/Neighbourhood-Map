@@ -1,15 +1,14 @@
 module.exports = function(grunt) {
 
-  // Load grunt tasks
+  // grunt tasks
   require('load-grunt-tasks')(grunt);
 
-  // Grunt configuration tasks
+  // configuration 
   grunt.initConfig({
 
-    // Read the package.json file
     pkg: grunt.file.readJSON('package.json'),
 
-    // Minify the javascript file
+    // Minify JS files
     uglify: {
       build: {
         files: {
@@ -21,7 +20,7 @@ module.exports = function(grunt) {
       }
     },
 
-    // Minify the CSS files
+    // Minify CSS files
     cssmin: {
       target: {
         files: [{
@@ -35,11 +34,11 @@ module.exports = function(grunt) {
     }
   });
 
-  // Tell grunt to use the plugins
+  // plugins
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-  // Register the tasks as default actions for the 'grunt' command
+  // use 'grunt' command (tasks)
   grunt.registerTask('default', ['uglify', 'cssmin']);
 
 };

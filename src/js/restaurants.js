@@ -98,6 +98,47 @@ var restaurants = [
     lng: -122.0996107,
     description: 'Mexican',
     address: '2020 W El Camino Real, Mountain View, CA 94040, USA'
+  },
+    {
+    name: 'Bajis Cafe',
+    lat: 37.4144828,
+    lng: -122.1002214,
+    description: 'Breakfast and Brunch',
+    address: '2423 Old Middlefield Way, Mountain View, CA 94043, USA'
+  },
+ {
+    name: 'Pizza Studio',
+    lat: 37.4027321,
+    lng: -122.1143234,
+    description: 'Pizza, Salad',
+    address: 'The Village at San Antonio Center, 565 San Antonio Rd #25, Mountain View, CA 94040, USA'
+  },
+ {
+    name: 'In-N-Out Burger',
+    lat: 37.4209559,
+    lng: -122.1283619,
+    description: 'Fast Foods, Burgers',
+    address: '1159 N Rengstorff Ave, Mountain View, CA 94043, USA'
+  },
+  {
+    name: 'Chez TJ',
+    lat: 37.3946038,
+    lng: -122.0804634,
+    description: 'French',
+    address: '938 Villa St, Mountain View, CA 94041, USA'
+  },
+  {
+    name: 'Kappo Nami Nami',
+    lat: 37.3933652,
+    lng: -122.0795372,
+    description: 'Japanese, Sushi Bars',
+    address: '240 Castro St, Mountain View, CA 94041, USA'
+  },
+  {
+    name: 'Voya',
+    lat: 37.4158479,
+    lng: -122.077612,
+    description: ' Latin American, Seafood',
+    address: '1390 Pear Ave b, Mountain View, CA 94043, USA'
   }
-  
 ]
