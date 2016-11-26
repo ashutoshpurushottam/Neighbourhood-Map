@@ -8,5 +8,4 @@ $(document).ready(function(){
     e.preventDefault();
     $('body').toggleClass('nav-expanded');
   })
-
 });

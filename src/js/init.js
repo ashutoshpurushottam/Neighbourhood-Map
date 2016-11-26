@@ -67,29 +67,10 @@ var ViewModel = function() {
         // Animation on marker
         restaurant.marker().setAnimation(google.maps.Animation.BOUNCE);
         setTimeout( function() { restaurant.marker().setAnimation(null); }, 500);
+        // pan to clicked restaurant
+        map.panTo(new google.maps.LatLng(restaurant.lat(), restaurant.lng()));
         // request for retrieving restaurant yelp rating
         self.yelpRequest(restaurant);
-        // initialize info window for each restaurant item
-		var infoWindow = new google.maps.InfoWindow({
-    		// default content
-    		content: ''
-		});
-
-        // modal dialog (getbootstrap.net)
-        var modalContent = '<div class="modal fade" id="myModal" tabindex="-1"\
-         role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' + 
-         '<div class="modal-dialog">' + '<div class="modal-content">' + 
-         '<div class="modal-header">' + 
-         '<h4 class="modal-title" id="myModalLabel">' + 
-         restaurant.name() + '</h4>' + '</div>' + '<div class="modal-body">' + 
-         restaurant.address() + '<br>' + restaurant.description() + 
-         '<div><a id="url-yelp" target="_blank" class="yelp-link">\
-         <span id="rating-text">Yelp Rating:</span></a>' 
-         + '<img id="rating-img">' + '</div>' + '</div></div></div>';
-
-        infoWindow.setContent(modalContent);
-        infoWindow.open(map, restaurant.marker());
-
     };
 
     self.yelpRequest = function(restaurant) {
@@ -126,30 +107,63 @@ var ViewModel = function() {
             yelpURL, 
             parameters, 
             yelpKeyData.consumerSecret,
-             yelpKeyData.tokenSecret);
+            yelpKeyData.tokenSecret);
 
         parameters.oauth_signature = encodedSignature;
 
         var ajaxSettings = {
             url: yelpURL,
             data: parameters,
+            timeout: 3000,
             cache: true,
             dataType: 'jsonp',
             success: function(response) {
-                $('#rating-img').attr("src", 
-                    response.businesses[0].rating_img_url);
-                $('#url-yelp').attr("href", 
-                    response.businesses[0].url);
+                var infoWindow = new google.maps.InfoWindow({
+                    // default content
+                    content: ''
+                });
+                var imageUrl = response.businesses[0].rating_img_url;
+                var url = response.businesses[0].url;
+
+                // modal dialog (getbootstrap.net)
+                var modalContent = '<div class="modal fade" id="myModal" tabindex="-1"\
+                role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+                '<div class="modal-dialog">' + '<div class="modal-content">' +
+                '<div class="modal-header">' + 
+                '<h4 class="modal-title" id="myModalLabel">' + 
+                restaurant.name() + '</h4>' + '</div>' + '<div class="modal-body">' +
+                restaurant.address() + '<br>' + restaurant.description() +
+                '<div><a id="url-yelp" target="_blank" class="yelp-link" href="' 
+                + url + '">' + '<br><span id="rating-text">Yelp Rating: </span></a>'
+                + '<img src="' + imageUrl + '">'+'</div>' + '</div></div></div>';
+                infoWindow.setContent(modalContent);
+                infoWindow.open(map, restaurant.marker());
             },
             error: function() {
-                $('#rating-text').html('Could not retrieve ratings from Yelp.');
+                var infoWindow = new google.maps.InfoWindow({
+                    // default content
+                    content: ''
+                });
+
+                // modal dialog (getbootstrap.net)
+                var modalContent = '<div class="modal fade" id="myModal" tabindex="-1"\
+                role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">' +
+                '<div class="modal-dialog">' + '<div class="modal-content">' +
+                '<div class="modal-header">' + 
+                '<h4 class="modal-title" id="myModalLabel">' + 
+                restaurant.name() + '</h4>' + '</div>' + '<div class="modal-body">' +
+                restaurant.address() + '<br>' + restaurant.description() +
+                '<br><div><span id="rating-text">Could not retrieve yelp rating</span></a>'
+                + '</div></div></div>';
+
+                infoWindow.setContent(modalContent);
+                infoWindow.open(map, restaurant.marker());
             }
         };
 
         // Yelp request
         $.ajax(ajaxSettings);
     }
-
 
 
     google.maps.event.addDomListener(window, 'load', function() {
