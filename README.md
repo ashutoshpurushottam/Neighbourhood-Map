@@ -1,8 +1,8 @@
 # The Neighbourhood Map #
 
 The Neighbourhood Map shows various restaurants inside google map in Mountain View area. 
-Each marker show details of the restaurant like its name, address, short description and its
-yelp rating which is retrieved from the Yelp API. On clicking the link the yelp page for the
+Each marker shows details of the restaurant like its name, address, short description and its
+yelp rating which is retrieved from the Yelp API. On clicking the link, the yelp page for the
 restaurant is opened.
 
 ### Technologies Used ###
